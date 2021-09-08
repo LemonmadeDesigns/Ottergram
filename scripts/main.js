@@ -1,3 +1,4 @@
+// USING ATTRIBUTES TO GRAB DATA
 var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var DETAIL_FRAME_SELECTOR = '[data-image-role="frame"]';
@@ -24,27 +25,34 @@ function setDetails(imageUrl, titleText) {
 // FUNCTION TO GRAB IMAGE FROM THUMBNAIL
 function imageFromThumb(thumb) {
   'use strict'
+
+  // RETURNING URL
   return thumb.getAttribute('data-image-url')
 }
 
 // FUNCTION TO PULL DATA FROM THUMB/THUMBMNAIL
 function titleFromThumb(thumb) {
-	"use strict";
+	("use strict");
+
+	// RETURNING TITLE
 	return thumb.getAttribute("data-image-title");
 }
 
-// FUNCTION TO SET IMAGES TO TITLE
+// FUNCTION TO SET TITLE TO IMAGES
 function setDetailsFromThumb(thumb) {
 	setDetails(imageFromThumb(thumb), titleFromThumb(thumb));
 }
 
 // FUNCTION TO SHOW THE CONTENTS OF THE PAGE
 function showDetails() {
-	"use strict";
+	("use strict");
 	var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
 	document.body.classList.remove(HIDDEN_DETAIL_CLASS);
 
+	// ADDING CSS
 	frame.classList.add(TINY_EFFECT_CLASS);
+
+	// REMOVING CSS
 	setTimeout(function () {
 		frame.classList.remove(TINY_EFFECT_CLASS);
 	}, 50);
@@ -53,6 +61,8 @@ function showDetails() {
 // FUNCTION TO ADD CLICK HANDLER TO THUMBNAIL...
 function addThumbnailClickHandler(thumb) {
   'use strict'
+
+//   ON CLICK.. SHOW DETAILS FROM THUMB AND CALL SHOW DETAILS FUNCTION
   thumb.addEventListener('click', function (event) {
     event.preventDefault()
     setDetailsFromThumb(thumb)
@@ -70,8 +80,10 @@ function getThumbnailsArray() {
 
 // FUNCTION TO HIDE DETAILS
 function hideDetails() {
-  'use strict'
-  document.body.classList.add(HIDDEN_DETAIL_CLASS)
+	("use strict");
+
+	// ADDING CSS CLASS
+	document.body.classList.add(HIDDEN_DETAIL_CLASS);
 }
 
 // FUNCTION TO HAVE ESCAPE KEY REACT TO CLICK HANDLER
@@ -80,6 +92,8 @@ function addKeyPressHandler() {
   document.body.addEventListener('keydown', function(e) {
     e.preventDefault()
     console.log(e.keyCode)
+
+    // IF KEYCODE IS EQUAL TO THE ESCAPE KEY, HIDE DETAILS
     if (e.keyCode === ESC_KEY) {
       hideDetails()
     }
