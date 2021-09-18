@@ -2,7 +2,7 @@
 
 ## HOMEWORK ASSIGNMENT
 
-![Homework 1](/img/Homework_Assignment.png "Homework 1")
+![Homework 1](/img/349_hw2_fall_2021.pdf "Homework2")
 
 ## FLEXBOX FROGGY
 
