@@ -4,7 +4,7 @@
 
 ![Homework 1](/img/Homework%20Submission_2.png "Homework2")
 
-![Homework 1](/img/Homework%20Submission_2.png "Homework2"){ width=50% height=50% }
+![<img src="/img/Homework%20Submission_2.png" width="100" height="100">]("Homework2")
 
 ## FLEXBOX FROGGY
 
