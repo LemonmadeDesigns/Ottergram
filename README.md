@@ -2,7 +2,9 @@
 
 ## HOMEWORK ASSIGNMENT
 
-![Homework 1](/img/Homework%20Submission_2.png =360px "Homework2")
+![Homework 1](/img/Homework%20Submission_2.png "Homework2")
+
+![Homework 1](/img/Homework%20Submission_2.png "Homework2"){ width=50% height=50% }
 
 ## FLEXBOX FROGGY
 
