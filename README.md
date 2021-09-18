@@ -2,7 +2,7 @@
 
 ## HOMEWORK ASSIGNMENT
 
-![Homework 1](/Homework%20Submission_2.png "Homework2")
+![Homework 1](/img/Homework%20Submission_2.png "Homework2")
 
 ## FLEXBOX FROGGY
 
