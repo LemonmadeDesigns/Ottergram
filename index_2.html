@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<style>
+			#slideshow {
+				max-height: 800px;
+				max-width: 800px;
+			}
+			#holder {
+				height: 800px;
+				width: 800px;
+			}
+
+      #leftArrow, #rightArrow { width: 200px; height: 200px; }
+		</style>
+	</head>
+	<body>
+		<div id="holder">
+			<img src="img/otter1.jpg" id="slideshow" />
+		</div>
+		<img src="img/arrowLeftGrey.png" id="leftArrow" />
+		<img src="img/arrowRightGrey.png" id="rightArrow" />
+
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script>
+			images = [
+				"img/otter1.jpg",
+				"img/otter2.jpg",
+				"img/otter3.jpg",
+				"img/otter4.jpg",
+				"img/otter5.jpg",
+				"img/Flexbox_Froggy.png",
+				"img/Grid_Garden.png",
+			];
+
+			$(document).ready(function () {
+				beginNow = setInterval(forwardImage, 4000);
+
+				$("#leftArrow").click(function () {
+					clearInterval(beginNow);
+					backwardsImage();
+				});
+
+				$("#rightArrow").click(function () {
+					clearInterval(beginNow);
+					forwardImage();
+				});
+
+				//This function will find the key for the current Image
+
+				function currentImageKey() {
+					i = jQuery.inArray($("#slideshow").attr("src"), images);
+					return i;
+				}
+
+				//This function will move the slideshow backwards one
+				function backwardsImage() {
+					currentImageKey();
+					if (i == 0) {
+						//changeImage(images.length - 1);
+					} else {
+						changeImage(i - 1);
+					}
+					checkArrows(i - 1);
+				}
+
+				//This function will move the slideshow forward one
+				function forwardImage() {
+					currentImageKey();
+					if (i < images.length - 1) {
+						changeImage(i + 1);
+					} else {
+						//changeImage(0);
+					}
+					checkArrows(i + 1);
+				}
+
+				//this function checks the arrows
+				function checkArrows(i) {
+					if (i == 0) {
+            $("#rightArrow").css("display", "inline");
+						$("#leftArrow").css("display", "none");
+						/* $("#rightArrow").css("display", "inline"); */
+					} else if (i == images.length - 1) {
+						$("#rightArrow").css("display", "none");
+						$("#leftArrow").css("display", "inline");
+					} else {
+						$("#rightArrow").css("display", "inline");
+						$("#leftArrow").css("display", "inline");
+					}
+				}
+
+				//This function will change to image to whatever the variable i passes to it
+
+				function changeImage(i) {
+					$("#slideshow")
+						.stop()
+						.animate(
+							{
+								opacity: 0,
+							},
+							200,
+							function () {
+								$("#slideshow").attr("src", images[i]);
+								$("#holder img").load(function () {
+									$("#slideshow").stop().animate(
+										{
+											opacity: 1,
+										},
+										200
+									);
+								});
+							}
+						);
+				}
+			});
+		</script>
+	</body>
+</html>

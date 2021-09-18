@@ -11,7 +11,12 @@
 		<!-- CSS -->
 		<link
 			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		/>
 		<link rel="stylesheet" href="stylesheets/styles.css" />
 	</head>
 	<body>
@@ -22,7 +27,6 @@
 
 		<!-- MAIN CONTENT -->
 		<main class="main-content">
-
 			<!-- UNORDERED LIST OF IMAGES -->
 			<ul class="thumbnail-list">
 				<li class="thumbnail-item">
@@ -32,13 +36,13 @@
 						data-image-title="Stayin' Alive"
 						data-image-url="img/otter1.jpg"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/otter1.jpg"
 							alt="Barry the Otter"
 						/>
-            <span class="thumbnail-title">Barry</span>
-          </a>
+						<span class="thumbnail-title">Barry</span>
+					</a>
 				</li>
 				<li class="thumbnail-item">
 					<a
@@ -46,14 +50,14 @@
 						data-image-role="trigger"
 						data-image-title="How Deep Is Your Love"
 						data-image-url="img/otter2.jpg"
-						>
-            <img
+					>
+						<img
 							class="thumbnail-image"
 							src="img/otter2.jpg"
 							alt="Robin the Otter"
 						/>
-            <span class="thumbnail-title">Robin</span>
-          </a>
+						<span class="thumbnail-title">Robin</span>
+					</a>
 				</li>
 				<li class="thumbnail-item">
 					<a
@@ -62,13 +66,13 @@
 						data-image-title="You Should Be Dancing"
 						data-image-url="img/otter3.jpg"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/otter3.jpg"
 							alt="Maurice the Otter"
 						/>
-            <span class="thumbnail-title">Maurice</span>
-          </a>
+						<span class="thumbnail-title">Maurice</span>
+					</a>
 				</li>
 				<li class="thumbnail-item">
 					<a
@@ -77,13 +81,13 @@
 						data-image-title="Night Fever"
 						data-image-url="img/otter4.jpg"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/otter4.jpg"
 							alt="Lesley the Otter"
 						/>
-            <span class="thumbnail-title">Lesley</span>
-          </a>
+						<span class="thumbnail-title">Lesley</span>
+					</a>
 				</li>
 				<li class="thumbnail-item">
 					<a
@@ -92,13 +96,13 @@
 						data-image-title="To Love Somebody"
 						data-image-url="img/otter5.jpg"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/otter5.jpg"
 							alt="Barbara the Otter"
 						/>
-            <span class="thumbnail-title">Barbara</span>
-          </a>
+						<span class="thumbnail-title">Barbara</span>
+					</a>
 				</li>
 
 				<!-- FLEXBOX FROGGY -->
@@ -109,13 +113,13 @@
 						data-image-title="Froggy Fever"
 						data-image-url="img/Flexbox_Froggy.png"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/Flexbox_Froggy.png"
 							alt="Froggy Fever"
 						/>
-            <span class="thumbnail-title">Froggy Fever</span>
-          </a>
+						<span class="thumbnail-title">Froggy Fever</span>
+					</a>
 				</li>
 
 				<!-- GARDEN GRID -->
@@ -126,31 +130,40 @@
 						data-image-title="Garden Grid"
 						data-image-url="img/Grid_Garden.png"
 					>
-            <img
+						<img
 							class="thumbnail-image"
 							src="img/Grid_Garden.png"
 							alt="Garden Grid"
 						/>
-            <span class="thumbnail-title">Garden Grid</span>
-          </a>
+						<span class="thumbnail-title">Garden Grid</span>
+					</a>
 				</li>
 			</ul>
-			​
-			<div class="detail-image-container">
-				<div class="detail-image-frame" data-image-role="frame">
+
+			<!-- Left right -->
+			<img src="img/arrowLeftGrey.png" id="leftArrow" />
+			<img src="img/arrowRightGrey.png" id="rightArrow" />
+			
+			<div class="detail-image-container carousel-inner">
+				<div class="detail-image-frame" data-image-role="frame" id="holder">
 					<img
+						id="slideshow"
 						class="detail-image"
 						data-image-role="target"
 						src="img/otter1.jpg"
-						alt=""
+						alt="Staying Alive Otter"
 					/>
-					<span class="detail-image-title" data-image-role="title" >Stayin' Alive</span>
+					<span class="detail-image-title" data-image-role="title"
+						>Stayin' Alive</span
+					>
 				</div>
 			</div>
 		</main>
 
-    <!-- JAVASCRIPT -->
+		<!-- JAVASCRIPT -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 		<script src="scripts/main.js" charset="utf-8"></script>
-
+ 
 	</body>
 </html>

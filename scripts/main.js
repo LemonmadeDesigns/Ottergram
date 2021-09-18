@@ -11,6 +11,10 @@ var TINY_EFFECT_CLASS = 'is-tiny';
 // ESCAPE KEY
 var ESC_KEY = 27;
 
+var imageKey = 0;
+const images = getThumbnailsArray()
+console.log('images')
+console.table(images)
 // FUNCTION TO SET DETALS OF IMAGE AND TEXT
 function setDetails(imageUrl, titleText) {
   'use strict'
@@ -23,6 +27,9 @@ function setDetails(imageUrl, titleText) {
 }
 
 // FUNCTION TO GRAB IMAGE FROM THUMBNAIL
+function keyFromThumb(thumb) {
+  return thumb.getAttribute('data-id')
+}
 function imageFromThumb(thumb) {
   'use strict'
 
@@ -40,7 +47,13 @@ function titleFromThumb(thumb) {
 
 // FUNCTION TO SET TITLE TO IMAGES
 function setDetailsFromThumb(thumb) {
-	setDetails(imageFromThumb(thumb), titleFromThumb(thumb));
+  const key = keyFromThumb(thumb)
+
+  imageKey = key;
+
+  console.log("hi IM thumb ", imageKey)
+
+	setDetails(imageFromThumb(thumb), titleFromThumb(thumb), imageKey);
 }
 
 // FUNCTION TO SHOW THE CONTENTS OF THE PAGE
@@ -55,15 +68,19 @@ function showDetails() {
 	// REMOVING CSS
 	setTimeout(function () {
 		frame.classList.remove(TINY_EFFECT_CLASS);
-	}, 50);
+	})
+  // 50);
 }
 
+function addThumbnailClickHandler(thumb, thumbKey) {
 // FUNCTION TO ADD CLICK HANDLER TO THUMBNAIL...
-function addThumbnailClickHandler(thumb) {
   'use strict'
+
+  //  TODO
 
 //   ON CLICK.. SHOW DETAILS FROM THUMB AND CALL SHOW DETAILS FUNCTION
   thumb.addEventListener('click', function (event) {
+    thumb.setAttribute("data-id", thumbKey);
     event.preventDefault()
     setDetailsFromThumb(thumb)
     showDetails()
@@ -104,9 +121,100 @@ function addKeyPressHandler() {
 function initializeEvents() {
   'use strict'
   var thumbnails = getThumbnailsArray()
-  thumbnails.forEach(addThumbnailClickHandler)
+  thumbnails.forEach((thumbnail, index) => addThumbnailClickHandler(thumbnail, index))
   addKeyPressHandler()
 }
+
+
+
+// SLIDER FUNCTION
+
+
+function nextImage() {
+  if (imageKey < images.length - 1) {
+    const imageKeyPlusOne = imageKey++;
+    const updatedThumbnail = images[imageKeyPlusOne]
+    setDetails(updatedThumbnail)
+  
+    console.log(DETAIL_TITLE_SELECTOR);
+    console.log('what is the current image key? ', imageKey)
+    console.log("what is the current image thumb? ", updatedThumbnail);
+  }     
+}
+
+
+function previousImage() {
+  // TODO
+  if (imageKey - 1) {
+		const imageKeyPlusOne = imageKey--;
+		const updatedThumbnail = images[imageKeyPlusOne];
+		setDetails(updatedThumbnail);
+
+		console.log("what is the current image key? ", imageKey);
+		console.log("what is the current image thumb? ", updatedThumbnail);
+		// } else {
+	}
+}
+
+
+//this function checks the arrows
+function checkArrows(i) {
+  if (i == 0) {
+    $("#rightArrow").css("display", "inline");
+    $("#leftArrow").css("display", "none");
+    /* $("#rightArrow").css("display", "inline"); */
+  } else if (i == images.length - 1) {
+    $("#rightArrow").css("display", "none");
+    $("#leftArrow").css("display", "inline");
+  } else {
+    $("#rightArrow").css("display", "inline");
+    $("#leftArrow").css("display", "inline");
+  }
+}
+
+
+
+$("#rightArrow").click(function () {
+
+	// forwardImage();
+});
+
+$("#leftArrow").click(function () {
+  nextImage();
+	// forwardImage();
+});
+
+// function forwardImage() {
+// 	if (i < images.length - 1) {
+// 		changeImage(i + 1);
+// 	} else {
+// 		//changeImage(0);
+// 	}
+// 	checkArrows(i + 1);
+// }
+
+// function changeImage(i) {
+// 	$(images)
+// 		.stop()
+// 		.animate(
+// 			{
+// 				opacity: 0,
+// 			},
+// 			200,
+// 			function () {
+// 				$(images).attr("src", images);
+// 				$("#holder img").load(function () {
+// 					$(images).stop().animate(
+// 						{
+// 							opacity: 1,
+// 						},
+// 						200
+// 					);
+// 				});
+// 			}
+// 		);
+// }
+
 
 // FUNCTION TO CALL INITIALIZE FUNCTION
 initializeEvents()
