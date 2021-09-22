@@ -153,6 +153,17 @@ function previousImage() {
   console.log("After PrevImage imageKey", imageKey);
 }
 
+$("#rightArrow").click(function () {
+	if (imageKey < images.length - 1) {
+		nextImage();
+	}
+});
+
+$("#leftArrow").click(function () {
+	if (imageKey > 0) {
+		previousImage();
+	}
+});
 
 // THIS FUNCTION CHECKS THE ARROWS
 function checkArrows(i) {
@@ -167,19 +178,6 @@ function checkArrows(i) {
     $("#leftArrow").css("display", "inline");
   }
 }
-
-$("#rightArrow").click(function () {
-  if (imageKey < images.length - 1) {
-    nextImage();
-  }
-});
-
-$("#leftArrow").click(function () {
-  if (imageKey > 0) {
-    previousImage();
-  }
-
-});
 
 // FUNCTION TO CALL INITIALIZE FUNCTION
 initializeEvents()
