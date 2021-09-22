@@ -30,6 +30,7 @@ function setDetails(imageUrl, titleText) {
 function keyFromThumb(thumb) {
   return thumb.getAttribute('data-id')
 }
+
 function imageFromThumb(thumb) {
   'use strict'
 
@@ -76,9 +77,7 @@ function addThumbnailClickHandler(thumb, thumbKey) {
 // FUNCTION TO ADD CLICK HANDLER TO THUMBNAIL...
   'use strict'
 
-  //  TODO
-
-//   ON CLICK.. SHOW DETAILS FROM THUMB AND CALL SHOW DETAILS FUNCTION
+  // ON CLICK.. SHOW DETAILS FROM THUMB AND CALL SHOW DETAILS FUNCTION
   thumb.addEventListener('click', function (event) {
     thumb.setAttribute("data-id", thumbKey);
     event.preventDefault()
@@ -126,43 +125,40 @@ function initializeEvents() {
 }
 
 
+// ================= SLIDER FUNCTION ================= //
 
-// SLIDER FUNCTION
-
-
+// THIS FUNCTION DISPLAYS THE NEXT IMAGE IMAGE
 function nextImage() {
-  if (imageKey < images.length - 1) {
+  console.log('Before NextImage imageKey', imageKey)
+    if (imageKey < images.length - 1) {
     const imageKeyPlusOne = imageKey++;
     const updatedThumbnail = images[imageKeyPlusOne]
-    setDetails(updatedThumbnail)
-  
-    console.log(DETAIL_TITLE_SELECTOR);
-    console.log('what is the current image key? ', imageKey)
-    console.log("what is the current image thumb? ", updatedThumbnail);
+    setDetails(updatedThumbnail);
   }     
+  console.log("After NextImage imageKey", imageKey);
 }
 
 
+// THIS FUNCTION DISPLAYS THE PREVIOUS IMAGE
 function previousImage() {
   // TODO
-  if (imageKey - 1) {
+  console.log("Before PrevImage imageKey", imageKey);
+  if (imageKey > 0) {
 		const imageKeyPlusOne = imageKey--;
 		const updatedThumbnail = images[imageKeyPlusOne];
 		setDetails(updatedThumbnail);
 
-		console.log("what is the current image key? ", imageKey);
-		console.log("what is the current image thumb? ", updatedThumbnail);
 		// } else {
 	}
+  console.log("After PrevImage imageKey", imageKey);
 }
 
 
-//this function checks the arrows
+// THIS FUNCTION CHECKS THE ARROWS
 function checkArrows(i) {
   if (i == 0) {
     $("#rightArrow").css("display", "inline");
     $("#leftArrow").css("display", "none");
-    /* $("#rightArrow").css("display", "inline"); */
   } else if (i == images.length - 1) {
     $("#rightArrow").css("display", "none");
     $("#leftArrow").css("display", "inline");
@@ -172,49 +168,18 @@ function checkArrows(i) {
   }
 }
 
-
-
 $("#rightArrow").click(function () {
-
-	// forwardImage();
+  if (imageKey < images.length - 1) {
+    nextImage();
+  }
 });
 
 $("#leftArrow").click(function () {
-  nextImage();
-	// forwardImage();
+  if (imageKey > 0) {
+    previousImage();
+  }
+
 });
-
-// function forwardImage() {
-// 	if (i < images.length - 1) {
-// 		changeImage(i + 1);
-// 	} else {
-// 		//changeImage(0);
-// 	}
-// 	checkArrows(i + 1);
-// }
-
-// function changeImage(i) {
-// 	$(images)
-// 		.stop()
-// 		.animate(
-// 			{
-// 				opacity: 0,
-// 			},
-// 			200,
-// 			function () {
-// 				$(images).attr("src", images);
-// 				$("#holder img").load(function () {
-// 					$(images).stop().animate(
-// 						{
-// 							opacity: 1,
-// 						},
-// 						200
-// 					);
-// 				});
-// 			}
-// 		);
-// }
-
 
 // FUNCTION TO CALL INITIALIZE FUNCTION
 initializeEvents()
